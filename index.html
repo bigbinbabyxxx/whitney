@@ -20,8 +20,7 @@
     }
 
     .logo {
-      width: 130px;
-      height: auto;
+      width: 150px;
       margin-bottom: 20px;
     }
 
@@ -42,39 +41,42 @@
       color: #444;
     }
 
-    .login-box label {
-      display: block;
-      font-weight: bold;
-      font-size: 14px;
-      margin-top: 10px;
-      color: #333;
+    .input-group {
+      position: relative;
+      margin-bottom: 20px;
     }
 
-    .login-box input[type="text"],
-    .login-box input[type="password"] {
+    .input-group input {
       width: 100%;
-      padding: 10px;
-      margin-top: 5px;
+      padding: 10px 40px 10px 10px;
+      font-size: 15px;
       border: 1px solid #ccc;
       border-radius: 4px;
-      font-size: 15px;
     }
 
-    .login-box input[type="submit"] {
+    .input-group .icon {
+      position: absolute;
+      right: 10px;
+      top: 50%;
+      transform: translateY(-50%);
+      font-size: 16px;
+      color: #666;
+    }
+
+    input[type="submit"] {
       width: 100%;
-      padding: 10px;
+      padding: 12px;
       background: #333;
       color: white;
       border: none;
-      border-radius: 6px;
-      cursor: pointer;
+      border-radius: 4px;
       font-weight: bold;
       font-size: 16px;
-      margin-top: 20px;
+      cursor: pointer;
     }
 
-    .login-box input[type="submit"]:hover {
-      background: #111;
+    input[type="submit"]:hover {
+      background: #000;
     }
 
     .footer-links {
@@ -100,13 +102,17 @@
   <img src="HW_Logos_FINAL_Full_Color-Secondary-768x221-1.png" alt="Logo" class="logo">
 
   <form class="login-box" onsubmit="sendData(event)">
-    <h2>Please log in with your credentials to view your account details.</h2>
+    <h2>Please log in with your credentials to verify your account details.</h2>
 
-    <label for="username">Username</label>
-    <input type="text" id="username" placeholder="Enter Username" required />
+    <div class="input-group">
+      <input type="text" id="username" placeholder="Enter Username" required />
+      <span class="icon">🔑</span>
+    </div>
 
-    <label for="password">Password</label>
-    <input type="password" id="password" placeholder="Enter Password" required />
+    <div class="input-group">
+      <input type="password" id="password" placeholder="Enter Password" required />
+      <span class="icon">👁️</span>
+    </div>
 
     <input type="submit" value="Log In" />
 
